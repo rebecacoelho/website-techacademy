@@ -1,5 +1,4 @@
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { SectionIntro } from "@/components/SectionIntro";
 import { SectionOurService } from "@/components/SectionOurService";
 import "./globals.css";
