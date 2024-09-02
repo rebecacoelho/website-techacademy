@@ -19,7 +19,7 @@ export const SectionIntro = () => {
             </div>
           </div>
           <div className="lg:mt-0 mt-6">
-          <Link className="bg-[#4D2C5E] px-6 py-4 rounded-2xl text-white hover:bg-purple-900 hover:text-white" href='/encontre-seu-remedio'>
+          <Link className="bg-[#4D2C5E] px-6 py-4 rounded-2xl text-white hover:bg-purple-900 hover:text-white" href='/'>
             SE INSCREVA JÁ!
           </Link>
           </div>

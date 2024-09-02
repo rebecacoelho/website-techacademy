@@ -6,11 +6,12 @@ import "./globals.css";
 import backgroundImage from "../../public/headerBackground.svg"
 import { SectionCourses } from "@/components/SectionCourses";
 import { SectionReviews } from "@/components/SectionReviews";
+import { SectionPublications } from "@/components/SectionPublications";
 
 export default function Home() {
   return (
    <div className="bg-white">
-    <div className="bg-[#FDF8EE] max-h-[100vh] lg:max-h-[73vh]" style={{
+    <div className="bg-[#FDF8EE] max-h-[100vh] lg:max-h-[65vh]" style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
@@ -20,6 +21,7 @@ export default function Home() {
         <SectionOurService />
         <SectionCourses />
         <SectionReviews />
+        <SectionPublications />
       </div>
       <Footer />
     </div>

@@ -53,7 +53,7 @@ export const SectionReviews = () => {
           </h3>
           <div className="bg-black w-16 mt-4 h-0.5"></div>
         </div>
-        <div className="flex gap-10">
+        <div className="flex gap-10 justify-center md:justify-start mb-6 md:mb-0">
           <button onClick={handlePrevClick} className="rounded-full">
             <Image src={ArrowLeft} alt="Previous" width={48} height={24} />
           </button>

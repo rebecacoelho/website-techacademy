@@ -9,7 +9,7 @@ interface ReviewCardProps {
 
 export function ReviewCard({ name, description, role }: ReviewCardProps) {
   return (
-    <div className="w-[200px] lg:w-[416px] p-6 bg-[#f5f5f5] rounded-lg shadow-md">
+    <div className="w-full md:w-[416px] p-6 bg-[#f5f5f5] rounded-lg shadow-md">
       <p className="text-lg text-gray-700 italic mb-4">
         &quot;{description}&quot;
       </p>
