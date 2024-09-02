@@ -1,4 +1,4 @@
-import Pic1 from '../../../public/css3.png'
+import Pic1 from '../../../public/nextjs.png'
 import Pic2 from '../../../public/reactjs.webp'
 import { SeePost } from "../SeePost";
 
@@ -12,8 +12,8 @@ export const SectionPublications = () => {
       </div>
     </div>
     <div className="flex flex-col md:flex-row justify-around mx-4 md:mx-16 mt-8 gap-4 lg:gap-0 items-center">
-      <SeePost title="NextJS" description="De acordo com o IBGE As famílias brasileiras gastaram cerca de R$ 168,3 bilhões em medicamentos em 2021..." image={Pic1} />
-      <SeePost title="React 19" description="De acordo com a OMS a aspirina, foi a primeira droga sintética, introduzida em 1897..." image={Pic2} />
+      <SeePost title="Introdução ao Next.js" description="O Next.js se destaca como um framework essencial para desenvolvedores React que buscam criar aplicações web de maneira mais eficiente e robusta..." image={Pic1} />
+      <SeePost title="Novidades do React 19" description="O React 19 está prestes a ser lançado e traz uma série de inovações que prometem transformar a maneira como desenvolvemos aplicações web..." image={Pic2} />
     </div>
    </div>
   );
