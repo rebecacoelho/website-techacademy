@@ -10,7 +10,7 @@ import { SectionPublications } from "@/components/SectionPublications";
 export default function Home() {
   return (
    <div className="bg-white">
-    <div className="bg-[#FDF8EE] max-h-[100vh] md:h-[730px] xl:h-[680px]" style={{
+    <div className="bg-[#FDF8EE] max-h-[100vh] md:h-[730px] xl:h-[700px]" style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: 'contain',
         backgroundPosition: 'center',
