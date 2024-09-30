@@ -30,10 +30,10 @@ export function CourseCard({
       onClick={handleClick}
     >
       <Image src={imageUrl} alt={title} className="w-12 h-12 object-cover rounded" />
-      <div className="flex-grow ml-4">
+      <div className="flex-grow ml-4 flex flex-col justify-center">
         <h3 className="text-lg font-semibold">{title}</h3>
         {isCurrentCourse && (
-          <span className="bg-red-400 text-white px-2 py-1 rounded text-sm">Curso Atual</span>
+          <span className="bg-red-400 text-white px-2 py-1 rounded text-sm text-center max-w-fit">Curso Atual</span>
         )}
       </div>
     </div>

@@ -63,7 +63,7 @@ export function CoursePage({ params }: { params: { title: string } }) {
           </div>
           <div className='flex justify-center items-center lg:w-9/12'>
             <div>
-              <span className='font-bold block text-center mb-2'>Conheça nossos cursos</span>
+              <span className='font-bold block text-center mb-2 text-xl'>Conheça nossos cursos</span>
               <div className='flex flex-col gap-4'>
                 <CourseCard
                   title="HTML5"
