@@ -33,7 +33,7 @@ const courses = [
   },
 ];
 
-export function CoursePage({ params }: { params: { title: string } }) {
+const CoursePage = ({ params }: { params: { title: string } }) => {
   const course = courses.find(c => slugify(c.title) === params.title);
 
   if (!course) {
@@ -88,6 +88,6 @@ export function CoursePage({ params }: { params: { title: string } }) {
       <Footer />
     </div>
   );
-}
+};
 
 export default CoursePage;
