@@ -1,9 +1,14 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import SectionPic from '../../../public/sectionPic.png'
 import { Header } from "../Header";
+import { useUserContext } from "@/context/userContext";
 
 export const SectionIntro = () => {
+  const { user } = useUserContext();
+
   return (
     <div className="bg-[#FDF8EE]">
       <Header />
@@ -19,9 +24,11 @@ export const SectionIntro = () => {
             </div>
           </div>
           <div className="lg:mt-0 mt-6">
-          <Link className="bg-[#4D2C5E] px-6 py-4 rounded-2xl text-white hover:bg-purple-900 hover:text-white" href='/'>
-            SE INSCREVA JÁ!
-          </Link>
+            {!user ? (
+              <Link className="bg-[#4D2C5E] px-6 py-4 rounded-2xl text-white hover:bg-purple-900 hover:text-white" href='/login'>
+                SE INSCREVA JÁ!
+              </Link>
+            ) : null}
           </div>
         </div>
         <div className="self-center hidden lg:block">

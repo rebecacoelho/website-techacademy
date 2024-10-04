@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import axiosInstance from "@/utils/axiosInstance"
+import axiosInstanceNode from "@/utils/axiosInstanceNode"
 import { useRouter } from "next/navigation"
 
 const LoginFormSchema = z.object({
@@ -41,7 +41,7 @@ export function FormLogin() {
   async function onSubmit(data: z.infer<typeof LoginFormSchema>) {
     const { email, password } = data
     try {
-      const { data } = await axiosInstance.post('/login', {
+      const { data } = await axiosInstanceNode.post('/login', {
         email, password
       })
 

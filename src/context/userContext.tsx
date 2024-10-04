@@ -1,6 +1,6 @@
 'use client';
 
-import axiosInstance from '@/utils/axiosInstance';
+import axiosInstanceNode from '@/utils/axiosInstanceNode';
 import { ReactNode, createContext, useEffect, useState, useContext } from 'react';
 
 interface User {
@@ -23,9 +23,11 @@ export const UserContext = createContext<UserContextType | undefined>(undefined)
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
+  console.log(user)
+
   useEffect(() => {
     if (!user) {
-      axiosInstance.get('/profile').then(({ data }) => {
+      axiosInstanceNode.get('/profile').then(({ data }) => {
         setUser(data);
       });
     }

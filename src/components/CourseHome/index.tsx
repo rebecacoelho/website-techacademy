@@ -1,9 +1,14 @@
+"use client"
+
 import { slugify } from "@/utils/formatUrl";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
+import { useUserContext } from "@/context/userContext";
 
 export const CourseHome = (props: any) => {
+  const { user } = useUserContext();
+
   const { image, title, description, initialHref, disabledButton } = props;
 
   const urlTitle = slugify(title);
@@ -26,7 +31,7 @@ export const CourseHome = (props: any) => {
                   "bg-gray-300 text-gray-500 cursor-not-allowed": disabledButton,
                 }
               )}
-              href={disabledButton ? "#" : `/${initialHref}/${urlTitle}`}
+              href={disabledButton ? "#" : !user ? "/login" : `/${initialHref}/${urlTitle}`}
               aria-disabled={disabledButton ? "true" : "false"}
               tabIndex={disabledButton ? -1 : 0} 
             >
