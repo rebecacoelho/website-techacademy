@@ -4,16 +4,17 @@ import { slugify } from '@/utils/formatUrl';
 import HtmlIMG from '../../../../public/html5.png';
 import CssIMG from '../../../../public/css3.png';
 import JavascriptIMG from '../../../../public/JavaScript.png';
-import Post1 from '../../../../public/nextjs.png';
-import Post2 from '../../../../public/reactjs.webp';
 import '../../globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CourseCard } from '@/components/CourseCard';
 import { useEffect, useState } from 'react';
 import axiosInstance from '@/utils/axiosInstance';
+import { useUserContext } from '@/context/userContext';
 
 const CoursePage = ({ params }: { params: { title: string } }) => {
+  const { user } = useUserContext();
+
   const [courses, setCourses] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
@@ -42,6 +43,8 @@ const CoursePage = ({ params }: { params: { title: string } }) => {
   }, []);
 
   const course = courses.find(c => slugify(c.title) === params.title);
+
+  console.log('aa', course)
 
   useEffect(() => {
     const savedScore = localStorage.getItem(`quizScore_${params.title}`);
@@ -81,12 +84,28 @@ const CoursePage = ({ params }: { params: { title: string } }) => {
       setShowResult(true);
       const finalScore = calculateFinalScore();
       localStorage.setItem(`quizScore_${params.title}`, finalScore.toString());
+      submitEvaluation(finalScore);
     }
   };
 
   const calculateFinalScore = () => {
     const totalQuestions = course?.perguntas?.length ?? 1;
     return (score / totalQuestions) * 10;
+  };
+
+  const submitEvaluation = async (finalScore: number) => {
+    const idCurso = course?.id_curso;
+    const body = {
+      email: user?.email,
+      id_curso: idCurso,
+      nota: finalScore.toFixed(1),
+    };
+
+    try {
+      await axiosInstance.post('/cursos-avaliar/avaliacoes', body);
+    } catch (error) {
+      console.error('Erro ao enviar avaliação:', error);
+    }
   };
 
   if (!course) {

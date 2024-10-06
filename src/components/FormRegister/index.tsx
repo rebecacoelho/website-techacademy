@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import axiosInstanceNode from "@/utils/axiosInstanceNode"
 import { useRouter } from "next/navigation"
+import axiosInstance from "@/utils/axiosInstance"
 
 const RegisterFormSchema = z
   .object({
@@ -61,6 +62,12 @@ export function FormRegister() {
     try {
       const { data } = await axiosInstanceNode.post('/register', {
         name, email, password
+      })
+
+      await axiosInstance.post('/usuarios/criar_usuario', {
+        nome: name, 
+        email, 
+        senha: password
       })
 
       if (data.error) {
