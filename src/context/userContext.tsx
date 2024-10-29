@@ -1,11 +1,11 @@
-'use client';
+"use client"
 
-import axiosInstanceNode from '@/utils/axiosInstanceNode';
+import axiosInstance from '@/utils/axiosInstance';
 import { ReactNode, createContext, useEffect, useState, useContext } from 'react';
 
 interface User {
-  id: number;
-  name: string;
+  usuario_id: number;
+  nome: string;
   email: string;
 }
 
@@ -23,15 +23,24 @@ export const UserContext = createContext<UserContextType | undefined>(undefined)
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
-  console.log(user)
-
   useEffect(() => {
-    if (!user) {
-      axiosInstanceNode.get('/profile').then(({ data }) => {
-        setUser(data);
-      });
+    const token = localStorage.getItem('token');
+    if (token) {
+      const fetchUserProfile = async () => {
+        try {
+          const { data } = await axiosInstance.get('/usuarios/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setUser(data);
+        } catch (err) {
+          console.error('Error fetching user profile:', err);
+        }
+      };
+      fetchUserProfile();
     }
-  }, [user]);
+  }, []); 
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

@@ -23,7 +23,7 @@ export const Header = () => {
             Home
           </Link>
           <Link className={styles.link} href={user ? '/' : "/login"}>
-            {user ? `Olá, ${user.name}` : 'Login'}
+            {user ? `Olá, ${user.nome}` : 'Login'}
           </Link>
         </div>
       </div>

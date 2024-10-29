@@ -15,7 +15,6 @@ import {
 import { Toaster, toast } from "react-hot-toast"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import axiosInstanceNode from "@/utils/axiosInstanceNode"
 import { useRouter } from "next/navigation"
 import axiosInstance from "@/utils/axiosInstance"
 
@@ -60,11 +59,8 @@ export function FormRegister() {
   async function onSubmit(data: z.infer<typeof RegisterFormSchema>) {
     const { name, email, password } = data
     try {
-      const { data } = await axiosInstanceNode.post('/register', {
-        name, email, password
-      })
 
-      await axiosInstance.post('/usuarios/criar_usuario', {
+      const { data } = await axiosInstance.post('/usuarios/criar_usuario', {
         nome: name, 
         email, 
         senha: password

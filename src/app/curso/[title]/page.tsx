@@ -11,9 +11,11 @@ import { CourseCard } from '@/components/CourseCard';
 import { useEffect, useState } from 'react';
 import axiosInstance from '@/utils/axiosInstance';
 import { useUserContext } from '@/context/userContext';
+import { useRouter } from 'next/navigation';
 
 const CoursePage = ({ params }: { params: { title: string } }) => {
   const { user } = useUserContext();
+  const router = useRouter();
 
   const [courses, setCourses] = useState<any[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -24,6 +26,10 @@ const CoursePage = ({ params }: { params: { title: string } }) => {
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [feedbackClass, setFeedbackClass] = useState('');
   const [previousScore, setPreviousScore] = useState<number | null>(null);
+
+  if(!user) {
+    router.push('/login'); 
+  }
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -43,8 +49,6 @@ const CoursePage = ({ params }: { params: { title: string } }) => {
   }, []);
 
   const course = courses.find(c => slugify(c.title) === params.title);
-
-  console.log('aa', course)
 
   useEffect(() => {
     const savedScore = localStorage.getItem(`quizScore_${params.title}`);
